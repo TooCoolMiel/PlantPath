@@ -5,6 +5,6 @@ import ui.UI;
 public class Main {
 
     public static void main(String[] args) {
-        UI main_ui = new UI("Hello world", 800,600);
+        new UI("PlantPath v1.0", 1000,700);
     }
 }

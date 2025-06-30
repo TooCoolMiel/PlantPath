@@ -2,6 +2,7 @@ package io;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class IO {
     /**
@@ -12,6 +13,6 @@ public class IO {
      * @throws Exception exception in case of input errors
      */
     public static BufferedImage loadImage(String path) throws Exception {
-        return ImageIO.read(IO.class.getResourceAsStream("/res/" + path));
+        return ImageIO.read(Objects.requireNonNull(IO.class.getResourceAsStream("/res/" + path)));
     }
 }

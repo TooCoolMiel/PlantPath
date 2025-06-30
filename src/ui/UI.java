@@ -2,26 +2,25 @@ package ui;
 
 // old is gold
 import io.IO;
+import ui.pages.AppPanel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
+
 /** Class handles all the UI stuff
-   The AppPanel really handle stuff like rendering, however the handles windowing and
+   The AppPanel really handles stuff like rendering, however UI handles windowing and
    connects UI elements together.
    You shouldn't have to make more than one instance of this class.
 */
 public class UI {
 
-    // The main frame, not really much to say
-    private final JFrame main_frame;
-
     // Constructs it and sets up everything with provided settings
     public UI(String screenTitle, int screenWidth, int screenHeight) {
         // creates a frame with the title and some default settings like a title
         // and centering everything else is self-explanatory
-        main_frame = new JFrame(screenTitle);
+        // The main frame, not really much to say
+        JFrame main_frame = new JFrame(screenTitle);
         main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension monitorDimensions = Toolkit.getDefaultToolkit().getScreenSize();
         main_frame.setLocation((monitorDimensions.width - screenWidth) / 2, (monitorDimensions.height - screenHeight) / 2);
@@ -29,7 +28,7 @@ public class UI {
         try {
             main_frame.setIconImage(IO.loadImage("PlantPathIcon.png"));
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to load icon image: " + e);
         }
 
         AppPanel main_app_panel = new AppPanel(screenWidth, screenHeight);
@@ -41,18 +40,4 @@ public class UI {
     }
 }
 
-/** Panel class where rendering is handled
- *
- */
-class AppPanel extends JPanel {
-    public AppPanel(int width, int height) {
-        setPreferredSize(new Dimension(width, height));
-        setDoubleBuffered(true);
-        setFocusable(true);
-        requestFocus();
-        setLayout(null);
-    }
-
-
-}
 

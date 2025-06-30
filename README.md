@@ -1,0 +1,1 @@
+PlantPath IB CS Project. Names of elements use camel-case types or descriptions use snake-case.
